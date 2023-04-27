@@ -9,7 +9,7 @@ import (
 	"text/tabwriter"
 )
 
-const phoneBookPath = "phonebook.json"
+//const phoneBookPath = "phonebook.json"
 
 type Person struct {
 	Name  string `json:"name"`
@@ -60,27 +60,18 @@ func usage() {
 	fmt.Fprintf(os.Stderr, "  get - Get one or all phonebook records\n")
 	fmt.Fprintf(os.Stderr, "     Options:\n")
 	fmt.Fprintf(os.Stderr, "       --name - Name of the person\n")
+
+	fmt.Fprintf(os.Stderr, "Global option:\n")
 	flag.PrintDefaults()
 }
 
 func main() {
-	phoneBook, err := ioutil.ReadFile(phoneBookPath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			phoneBook = []byte("[]")
-			ioutil.WriteFile(phoneBookPath, phoneBook, 0644)
-		} else {
-			panic(err)
-		}
-	}
-
-	var records Records
-
-	json.Unmarshal(phoneBook, &records.Entries)
-
 	// Define command-line flags
 	var name string
 	var phone string
+	var phoneBookPath string
+
+	flag.StringVar(&phoneBookPath, "phoneBookPath", "phonebook.json", "Specify a path where the phonebook.json will be stored!")
 
 	addCmd := flag.NewFlagSet("add", flag.ExitOnError)
 	addCmd.StringVar(&name, "name", "", "Name of the person")
@@ -98,11 +89,31 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Parse rest of the command-line args
-	nArgs := flag.Args()
-	switch nArgs[0] {
+	flag.Parse()
+
+	if pBookPath := os.Getenv("PB_PATH"); pBookPath != "" {
+		fmt.Printf("Using phonebook path %s from environment variable PB_PATH\n", pBookPath)
+		flag.Set(phoneBookPath, pBookPath)
+	}
+
+	phoneBook, err := ioutil.ReadFile(phoneBookPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			phoneBook = []byte("[]")
+			ioutil.WriteFile(phoneBookPath, phoneBook, 0644)
+		} else {
+			panic(err)
+		}
+	}
+
+	var records Records
+
+	json.Unmarshal(phoneBook, &records.Entries)
+
+	// Parse command-line args
+	switch flag.Arg(0) {
 	case "add":
-		addCmd.Parse(nArgs[1:])
+		addCmd.Parse(flag.Args()[1:])
 		if addCmd.NFlag() < 2 {
 			fmt.Println("You must supply both --name and --phone options")
 			addCmd.Usage()
@@ -114,7 +125,7 @@ func main() {
 		}
 		records.AddEntry(newRecord)
 	case "delete":
-		deleteCmd.Parse(nArgs[1:])
+		deleteCmd.Parse(flag.Args()[1:])
 		if deleteCmd.NFlag() < 1 {
 			fmt.Println("You must supply --name option")
 			deleteCmd.Usage()
@@ -122,7 +133,7 @@ func main() {
 		}
 		records.DeleteEntry(name)
 	case "get":
-		getCmd.Parse(nArgs[1:])
+		getCmd.Parse(flag.Args()[1:])
 		entries := records.GetEntry(name)
 		w := tabwriter.NewWriter(os.Stdout, 0, 0, 1, ' ', tabwriter.AlignRight|tabwriter.Debug)
 		fmt.Fprintln(w, "Name\tPhone\t")
