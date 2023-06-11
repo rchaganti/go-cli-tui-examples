@@ -91,11 +91,6 @@ func main() {
 
 	flag.Parse()
 
-	/*	if pBookPath := os.Getenv("PB_PATH"); pBookPath != "" {
-			fmt.Printf("Using phonebook path %s from environment variable PB_PATH\n", pBookPath)
-			flag.Set(phoneBookPath, pBookPath)
-		}
-	*/
 	phoneBook, err := ioutil.ReadFile(phoneBookPath)
 	if err != nil {
 		if os.IsNotExist(err) {
