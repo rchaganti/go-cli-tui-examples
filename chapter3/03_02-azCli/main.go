@@ -1,6 +1,8 @@
 package main
 
-import "azCli/cmd"
+import (
+	"azCli/cmd"
+)
 
 func main() {
 	cmd.Execute()

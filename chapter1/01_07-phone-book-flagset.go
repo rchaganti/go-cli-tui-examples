@@ -99,6 +99,7 @@ func main() {
 	}
 
 	// Parse rest of the command-line args
+	flag.Parse()
 	nArgs := flag.Args()
 	switch nArgs[0] {
 	case "add":
