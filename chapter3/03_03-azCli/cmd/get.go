@@ -5,10 +5,11 @@ import (
 )
 
 var getCmd = &cobra.Command{
-	Use:   "get",
-	Short: "Get information about an Azure resource",
-	Long:  "Get detailed information about a resource from an Azure resource group",
-	Args:  cobra.ExactArgs(1),
+	Use:     "get",
+	Short:   "Get information about an Azure resource.",
+	Long:    "Get detailed information about a resource.",
+	Args:    cobra.ExactArgs(1),
+	GroupID: "read",
 }
 
 func init() {

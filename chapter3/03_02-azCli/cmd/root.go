@@ -16,12 +16,6 @@ var rootCmd = &cobra.Command{
 	Use:   "az",
 	Short: "A re-imagined Azure CLI",
 	Long:  "Azure CLI written in Go language using the Cobra package.",
-	Args:  cobra.NoArgs,
-}
-
-func init() {
-	rootCmd.PersistentFlags().StringVarP(&subscriptionId, "subscriptionId", "s", "", "ID of the Azure subscription where the Azure resources are provisioned.")
-	rootCmd.MarkPersistentFlagRequired("subscriptionId")
 }
 
 func Execute() {

@@ -5,10 +5,11 @@ import (
 )
 
 var listCmd = &cobra.Command{
-	Use:   "list",
-	Short: "List a specific type of Azure resources",
-	Long:  "List a specific type of resources from an Azure resource group.",
-	Args:  cobra.ExactArgs(1),
+	Use:     "list",
+	Short:   "List a specific type of Azure resource.",
+	Long:    "List a specific type of Azure resource.",
+	Args:    cobra.ExactArgs(1),
+	GroupID: "read",
 }
 
 func init() {
