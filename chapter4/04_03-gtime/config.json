@@ -1,0 +1,11 @@
+{
+	"target": "",
+	"timezones": [
+		"Asia/Shanghai",
+		"Europe/London",
+		"America/New_York",
+		"America/Chicago",
+		"America/Los_Angeles"		
+	],
+	"output": "json"
+}

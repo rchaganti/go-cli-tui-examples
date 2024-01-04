@@ -1,0 +1,8 @@
+{
+	"target": "2/12/2024 18:30",
+	"timezones": [
+		"Asia/Shanghai",
+		"America/New_York"
+	],
+	"output": "json"
+}
