@@ -23,7 +23,7 @@ const (
 var rootCmd = &cobra.Command{
 	Use:   "gtime",
 	Short: "gtime - track time across timezones",
-	Long:  "gtime - track time across timezones to help you schedule meetings",
+	Long:  "gtime - track time across timezones",
 	Run: func(cmd *cobra.Command, args []string) {
 		target := viper.GetString("target")
 
@@ -35,7 +35,7 @@ var rootCmd = &cobra.Command{
 
 		err := gtime.ConvertTime(target, timezones, output)
 		if err != nil {
-			fmt.Printf("Error converting taget time to specified timezones: %s", err)
+			fmt.Printf("Error converting target time to specified timezones: %s", err)
 		}
 	},
 }

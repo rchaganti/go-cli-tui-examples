@@ -21,7 +21,7 @@ const (
 var rootCmd = &cobra.Command{
 	Use:   "gtime",
 	Short: "gtime - track time across timezones",
-	Long:  "gtime - track time across timezones to help you schedule meetings",
+	Long:  "gtime - track time across timezones",
 	Run: func(cmd *cobra.Command, args []string) {
 		target := viper.GetString("target")
 		timezones := viper.GetStringSlice("timezones")
