@@ -1,0 +1,1 @@
+Compare Go and Rust programming languages from a learning point of view. Which one is better to learn first for beginners?
