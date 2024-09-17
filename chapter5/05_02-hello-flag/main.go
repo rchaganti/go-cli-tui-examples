@@ -24,7 +24,7 @@ func main() {
 		},
 		Action: func(c *cli.Context) error {
 			var name string
-			if name = strings.Trim(c.String("name"), " "); name != "" {
+			if name = strings.TrimSpace(c.String("name")); name != "" {
 				fmt.Printf("Hello, %s\n", name)
 			} else {
 				fmt.Printf("%s cannot be empty\n\n", "--name")

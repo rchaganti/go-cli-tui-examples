@@ -1,0 +1,74 @@
+[
+    {
+        "sessionId": "go-basics",
+        "timestamp": "2024-08-12 09:59",
+        "model": "gemini-1.5-flash",
+        "tokencount": 53,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "537f13b3",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "a005b1d5",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "7efe1011",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "7dd8cb80",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "9a34e235",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "d091c8de",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "rust-tui",
+        "timestamp": "2024-08-11 20:24",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    },
+    {
+        "sessionId": "go-concurrency",
+        "timestamp": "2024-08-11 19:54",
+        "model": "gemini-1.5-flash",
+        "tokencount": 0,
+        "messages": null,
+        "isselected": false
+    }
+]

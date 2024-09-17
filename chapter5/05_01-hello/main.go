@@ -19,7 +19,7 @@ func main() {
 		var name string
 		if c.Args().Present() {
 			name = c.Args().Get(0)
-			if strings.Trim(name, " ") == "" {
+			if strings.TrimSpace(name) == "" {
 				name = "World"
 			}
 			fmt.Printf("Hello, %s\n", name)

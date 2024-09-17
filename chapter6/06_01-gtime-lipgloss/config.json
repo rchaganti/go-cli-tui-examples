@@ -1,0 +1,11 @@
+{
+  "config-path": "./config.json",
+  "output": "table",
+  "timezones": [
+    "Asia/Shanghai",
+    "Asia/Tokyo",
+    "Australia/Sydney",
+    "Europe/London",
+    "Europe/Amsterdam"
+  ]
+}

@@ -12,9 +12,9 @@ import (
 	"google.golang.org/api/option"
 )
 
-func ListModels(apiKey string) []*genai.Model {
+func ListModels(apiKey string) []*genai.ModelInfo {
 	ctx := context.Background()
-	models := make([]*genai.Model, 0)
+	models := make([]*genai.ModelInfo, 0)
 	client, err := genai.NewClient(ctx, option.WithAPIKey(apiKey))
 	if err != nil {
 		log.Fatal(err)
@@ -31,17 +31,14 @@ func ListModels(apiKey string) []*genai.Model {
 			panic(err)
 		}
 
-		if err != nil {
-			log.Fatal(err)
-		}
 		models = append(models, m)
 	}
 
 	return models
 }
 
-func GetModel(apiKey, name string) genai.Model {
-	var model genai.Model
+func GetModel(apiKey, name string) genai.ModelInfo {
+	var model genai.ModelInfo
 	models := ListModels(apiKey)
 	for _, m := range models {
 		if m.Name == name {

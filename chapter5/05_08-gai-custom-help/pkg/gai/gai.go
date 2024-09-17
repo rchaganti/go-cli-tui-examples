@@ -11,12 +11,12 @@ import (
 	"google.golang.org/api/option"
 )
 
-func ListModels(apiKey string) ([]*genai.Model, error) {
+func ListModels(apiKey string) ([]*genai.ModelInfo, error) {
 	if apiKey == "" {
 		return nil, fmt.Errorf("API key is required")
 	}
 	ctx := context.Background()
-	models := make([]*genai.Model, 0)
+	models := make([]*genai.ModelInfo, 0)
 	client, err := genai.NewClient(ctx, option.WithAPIKey(apiKey))
 	if err != nil {
 		return nil, err
@@ -42,14 +42,14 @@ func ListModels(apiKey string) ([]*genai.Model, error) {
 	return models, nil
 }
 
-func GetModel(apiKey, name string) (genai.Model, error) {
+func GetModel(apiKey, name string) (genai.ModelInfo, error) {
 	if apiKey == "" {
-		return genai.Model{}, fmt.Errorf("API key is required")
+		return genai.ModelInfo{}, fmt.Errorf("API key is required")
 	}
-	var model genai.Model
+	var model genai.ModelInfo
 	models, err := ListModels(apiKey)
 	if err != nil {
-		return genai.Model{}, err
+		return genai.ModelInfo{}, err
 	}
 	for _, m := range models {
 		if m.Name == name {
